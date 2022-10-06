@@ -1,0 +1,23 @@
+    About the architecture.
+The application should be built on a domain model. Here is a lot of business logic inside
+the controller. It needs to be divided into several layers (Controllers/Services/Repositories).
+
+    About the code.
+A lot of nested if...else statements makes it difficult to read and understand the code and logic.
+Spaghetti code needs to be divided into several functions. One function handles one task.
+Line 5:   req.body always returns true, there is no need to check it.
+Line 7,9: Use the camelCase notation. Use "userId" variable name instead of "idUser", the key in req.body has name "userID".
+          To make the code even prettier you can rename keys in the body object to the camelCase notation.
+          And then use the destructuring assignment syntax:
+          const { requestId, project, userId, user } = req.body;
+Line 18:  All requests to a database need to be in try...catch statements. All errors have to be caught in the case
+          when a DB is down.
+Line 23:  Why do you create a new variable here?
+Line 39:  Linter should highlight the unused variable. Remove this line.
+Line 50:  It would be faster do not calculate "debtCollectors.length" on each cycle of for statement.
+          Example: for (let i = 0, length = debtCollectors.length; i < length ; i++) {
+Line 52-54: Use the destructuring assignment syntax.
+Line 64-65: Probably unnecessary using of "!!". Use a variable in if statement in the case of debugging.
+Line 71:  Forgot the closing quote "'".
+Line 96-97: Add curly braces to if statement.
+Remove all unused comments.
